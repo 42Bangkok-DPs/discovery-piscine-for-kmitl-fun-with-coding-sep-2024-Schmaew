@@ -1,6 +1,6 @@
 body {
-    background-color: #f4f4f9; /* Light grey background for a clean look */
-    font-family: Arial, sans-serif; /* Simple, minimal font */
+    background-color: #f4f4f9; 
+    font-family: Arial, sans-serif; 
     margin: 0;
     padding: 0;
 }
@@ -12,17 +12,17 @@ body {
     margin: 2rem auto;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid #ddd; /* Light border for subtle structure */
-    border-radius: 8px; /* Rounded corners for a modern touch */
-    background-color: white; /* Contrast with the light background */
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    background-color: white; 
     gap: 0.5rem;
     min-height: 100px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     padding: 1rem;
 }
 
 #ft_list a:nth-child(odd) div {
-    background-color: #e0f7fa; /* Soft light blue for contrast */
+    background-color: #e0f7fa; 
 }
 
 a:hover {
@@ -35,7 +35,7 @@ a {
 }
 
 .todo {
-    background-color: #b2dfdb; /* Light teal for a soft contrast */
+    background-color: #b2dfdb; 
     display: flex;
     justify-content: center;
     align-items: center;
