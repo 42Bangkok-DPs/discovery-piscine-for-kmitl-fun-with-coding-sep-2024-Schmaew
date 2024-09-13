@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Basic Calculator</title>
   <link rel="stylesheet" href="calc.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <div class="topic">Basic Calculator</div>
@@ -21,20 +22,16 @@
     <button type="submit">Try me!</button>
   </form>
   <script>
-    let timer = setInterval(useMe, 30000);
-
-    function useMe() {
+    let timer = setInterval(() => {
       alert("Please, use me...");
-    }
+    }, 30000);
 
-    const form = document.querySelector(".calc");
+    $(".calc").on("submit", function(event) {
+      event.preventDefault(); 
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const operator = document.getElementById("operator").value;
-      let left = document.getElementById("left").value;
-      let right = document.getElementById("right").value;
+      const operator = $("#operator").val(); 
+      let left = $("#left").val();           
+      let right = $("#right").val();        
 
       if (left === "" || right === "") {
         alert("Error :(");
@@ -75,8 +72,8 @@
           result = "Unknown operator";
       }
 
-      alert(result);
-      console.log(result);
+      alert(result); 
+      console.log(result); 
     });
   </script>
 </body>

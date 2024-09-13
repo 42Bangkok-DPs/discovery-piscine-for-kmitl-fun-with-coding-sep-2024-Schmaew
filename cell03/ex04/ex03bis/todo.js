@@ -1,65 +1,59 @@
-const todoList = document.getElementById("ft_list");
-let todoId = 0;
-
-window.onload = loadTodo;
-
-function saveTodo() {
-    const todos = [];
-    const links = todoList.querySelectorAll('a');
-    links.forEach(link => {
+$(document).ready(function () {
+    let todoId = 0;
+    $(window).on("load", loadTodo);
+    function saveTodo() {
+      const todos = [];
+      const links = $("#ft_list").find("a").toArray();
+      links.forEach((link) => {
         const todo = {
-            id: link.id,
-            text: link.querySelector('.todo').textContent
+          id: link.id,
+          text: $(link).find(".todo").text(),
         };
         todos.push(todo);
-    });
-    document.cookie = `todos=${JSON.stringify(todos)}; path=/;`;
-}
-
-function loadTodo() {
-    const cookieString = document.cookie.split('; ').find(row => row.startsWith('todos='));
-    if (cookieString) {
-        const todos = JSON.parse(cookieString.split('=')[1]);
-        todos.forEach(todo => {
-            const newLink = document.createElement("a");
-            const newNode = document.createElement("div");
-            const textNode = document.createTextNode(todo.text);
-            newNode.className = "todo";
-            newNode.appendChild(textNode);
-            newLink.id = todo.id;
-            newLink.onclick = () => deleteTodo(newLink.id);
-            newLink.appendChild(newNode);
-            todoList.appendChild(newLink);
+      });
+      const encode_todos = encodeURIComponent(JSON.stringify(todos));
+      document.cookie = encode_todos; 
+    }
+  
+    function loadTodo() {
+      const cookieString = document.cookie;
+      if (cookieString) {
+        const todos = JSON.parse(decodeURIComponent(cookieString));
+        todos.forEach((todo) => {
+          $("<a></a>")
+            .attr("id", todo.id)
+            .click(function () {
+              deleteTodo(this.id);
+            })
+            .append($("<div></div>").addClass("todo").text(todo.text))
+            .appendTo($("#ft_list"));
         });
-        todoId = todos.length ? Math.max(...todos.map(todo => parseInt(todo.id))) + 1 : 0;
+        todoId = todos.length
+          ? Math.max(...todos.map((todo) => parseInt(todo.id))) + 1
+          : 0;
+      }
     }
-}
-
-function newTodo(){
-    let todoMsg = prompt("Enter a new todo:");
-    if (todoMsg){
-        const newLink = document.createElement("a");
-        const newNode = document.createElement("div");
-        const textNode = document.createTextNode(todoMsg);
-        newNode.className = "todo";
-        newNode.appendChild(textNode);
-
-        newLink.id = todoId++;
-        newLink.onclick = ()=>{deleteTodo(newLink.id)};
-        newLink.appendChild(newNode);
-        todoList.insertBefore(newLink, todoList.firstChild);
+  
+    $(".new-btn").click(newTodo);
+    function newTodo() {
+      let todoMsg = prompt("Enter a new todo:");
+      if (todoMsg) {
+        var newLink = $("<a></a>")
+          .attr("id", todoId++)
+          .click(function () {
+            deleteTodo(this.id);
+          });
+        $("<div></div>").addClass("todo").text(todoMsg).appendTo(newLink);
+        $("#ft_list").prepend(newLink);
         saveTodo();
-
+      }
     }
-}
-
-function deleteTodo(id){
-    let deleteMsg = confirm("Are you sure you want to delete this todo?");
-    if (deleteMsg){
-        const todo = document.getElementById(id);
-        console.log(id);
-        todoList.removeChild(todo);
+  
+    function deleteTodo(id) {
+      let deleteMsg = confirm("Are you sure you want to delete this todo?");
+      if (deleteMsg) {
+        $("#" + id).remove();
         saveTodo();
+      }
     }
-
-}
+  });
