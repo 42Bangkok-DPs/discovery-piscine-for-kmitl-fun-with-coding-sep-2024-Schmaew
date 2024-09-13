@@ -1,0 +1,72 @@
+body {
+    background-color: #f4f4f9; /* Light grey background for a clean look */
+    font-family: Arial, sans-serif; /* Simple, minimal font */
+    margin: 0;
+    padding: 0;
+}
+
+#ft_list {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 2rem auto;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #ddd; /* Light border for subtle structure */
+    border-radius: 8px; /* Rounded corners for a modern touch */
+    background-color: white; /* Contrast with the light background */
+    gap: 0.5rem;
+    min-height: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 1rem;
+}
+
+#ft_list a:nth-child(odd) div {
+    background-color: #e0f7fa; /* Soft light blue for contrast */
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    width: 100%;
+}
+
+.todo {
+    background-color: #b2dfdb; /* Light teal for a soft contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 0 1rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.new-btn {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2rem auto 0;
+}
+
+.new-btn button {
+    width: 100%;
+    height: 3rem;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.new-btn button:hover {
+    background-color: #2980b9;
+    cursor: pointer;
+}
