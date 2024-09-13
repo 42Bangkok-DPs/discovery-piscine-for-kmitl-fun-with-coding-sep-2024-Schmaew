@@ -46,11 +46,13 @@
 
       if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
         alert("Error :(");
+        console.log("Error :(");
         return;
       }
 
       if ((operator === "div" && right === 0) || (operator === "mod" && right === 0)) {
         alert("It’s over 9000!");
+        console.log("It’s over 9000!");
         return;
       }
 
